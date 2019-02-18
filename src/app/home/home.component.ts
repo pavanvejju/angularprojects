@@ -23,21 +23,30 @@ export class HomeComponent implements OnInit {
 
   	ngOnInit() { 
 
-  		this.itemCount	=	this.goals.length;
-  		this._data.goal.subscribe(res=>this.goals=res);
-  		this._data.changeGoal(this.goals);
+		//	this.itemCount	=	this.goals.length;	   
+		
+  	//	this._data.goal.subscribe(res=>this.goals=res);
+			this._data.fetchUserbyID1().subscribe((res : any[])=>{ 
+				let list	=	res;
+				for(let obj in list){
+				//	console.log("ressss::"+list[obj].sha);
+					this.goals.push(list[obj].sha);
+				
+				}
+			});   
+			
   	}
 
   	addItem(){
 		this.goals.push(this.goalText);
 		this.goalText='';
 		this.itemCount	=	this.goals.length;
-		this._data.changeGoal(this.goals);
+		//this._data.changeGoal(this.goals);
   	}
 
   	 removeItem(i) {
 	    this.goals.splice(i, 1);
-	    this._data.changeGoal(this.goals);
+	    //this._data.changeGoal(this.goals);
 	  }
 
 }

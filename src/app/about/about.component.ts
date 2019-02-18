@@ -16,7 +16,7 @@ goals: any;
   }
 
   ngOnInit() {
-  this._data.goal.subscribe(res => this.goals = res);
+  //this._data.goal.subscribe(res => this.goals = res);
   }
 
   sendMeHome() {
